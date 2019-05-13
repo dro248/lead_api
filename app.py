@@ -17,3 +17,38 @@ Received: {datetime.datetime.utcnow()}
 """)
 	return f"Success. Hello World: {request.method}"
 
+
+@app.route('/leads', methods=['POST'])
+def receive_leads():
+	""" Question: What do leads look like?"""
+	if request.method == 'GET':
+		return "Please post to this endpoint [/leads]"
+
+	print(request.data)
+	with open('./leads.txt', 'a') as file:
+		file.write(f"""
+Request Method: {request.method}
+Received: {datetime.datetime.utcnow()}
+{'-' * 30}
+{request.data}
+{'=' * 50}
+""")
+	return f"Successfully received LEADS: {request.method}"
+
+
+@app.route('/interesting_moments', methods=['POST'])
+def receive_ims():
+	""" Question: What do `Interesting Moments` look like?"""
+	if request.method == 'GET':
+		return "Please post to this endpoint [/interesting_moments]"
+
+	print(request.data)
+	with open('./interesting_moments.txt', 'a') as file:
+		file.write(f"""
+Request Method: {request.method}
+Received: {datetime.datetime.utcnow()}
+{'-' * 30}
+{request.data}
+{'=' * 50}
+""")
+	return f"Successfully received INTERESTING_MOMENTS: {request.method}"
