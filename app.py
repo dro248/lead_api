@@ -7,7 +7,7 @@ import datetime
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
 	print(request.data)
-	with open('./received.txt', 'a') as file:
+	with open('./received.log', 'a') as file:
 		file.write(f"""
 Request Method: {request.method}
 Received: {datetime.datetime.utcnow()}
@@ -22,7 +22,7 @@ Received: {datetime.datetime.utcnow()}
 def receive_leads():
 	""" Question: What do leads look like?"""
 	print(request.data)
-	with open('./leads.txt', 'a') as file:
+	with open('./leads.log', 'a') as file:
 		file.write(f"""
 Request Method: {request.method}
 Received: {datetime.datetime.utcnow()}
@@ -37,7 +37,7 @@ Received: {datetime.datetime.utcnow()}
 def receive_ims():
 	""" Question: What do `Interesting Moments` look like?"""
 	print(request.data)
-	with open('./interesting_moments.txt', 'a') as file:
+	with open('./interesting_moments.log', 'a') as file:
 		file.write(f"""
 Request Method: {request.method}
 Received: {datetime.datetime.utcnow()}
